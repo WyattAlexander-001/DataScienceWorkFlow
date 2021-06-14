@@ -1,4 +1,16 @@
 #Data Scientist Guide
+
+'''
+MINDSET or "HOW TO THINK"
+
+
+
+'''
+
+
+
+
+
 #import all of these standard libraries
 import pandas as pd  # To read data
 import numpy as np #math
@@ -79,8 +91,9 @@ sns.catplot(data=newData, x ='columnX', y='columnY')
 data.describe()
 
 
-#Linear Regression Template
-#Y is dependent (Like Revenue), x1 is your feature
+###############Linear Regression Template#####################
+#Y is dependent (Like Revenue), x1 is your feature (like Marketing)
+#In this example it's GPA being affected by your SAT score
 y =data['GPA']
 x1=data['SAT']
 
@@ -113,6 +126,32 @@ plt.xlabel('SAT',fontsize =20)
 plt.ylabel('GPA', fontsize=20)
 plt.show()
 
+##########Simple linear regression for year from Ken Jee, using sklearn #############
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+import math
+
+#set variables need to be in specific format 
+X1 = data_final.odometer.values.reshape(-1,1)
+y1 = data_final.price.values.reshape(-1,1)
+
+#create train / test split for validation 
+X_train1, X_test1, y_train1, y_test1 = train_test_split(X1, y1, test_size=0.3, random_state=0)
+        
+reg = LinearRegression().fit(X_train1, y_train1)
+reg.score(X_train1, y_train1)
+reg.coef_
+y_hat1 = reg.predict(X_train1)
+
+plt.scatter(X_train1,y_train1)
+plt.scatter(X_train1,y_hat1)
+plt.show()
+
+y_hat_test1 = reg.predict(X_test1)
+plt.scatter(X_test1, y_test1)
+plt.scatter(X_test1, y_hat_test1)
+plt.show()
 
 '''
 Classification
