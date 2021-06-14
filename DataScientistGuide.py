@@ -1,14 +1,46 @@
 #Data Scientist Guide
 
 '''
-MINDSET or "HOW TO THINK"
+MINDSET and PREPWORK or "HOW TO THINK"
+
+You are trying to answer a QUESTION
+
+Check where the data came from, you want quality data
+
+1) Under the shape and basic info of the data  
+    Histogram for numbers // Boxplot for categoricals
+    
+2) Data Cleaning
+    How are you gonna deal with NAN? Is it skewed or not?
+
+3) Data Exploration
+    Check for correlation in REGRESSION problems
+    Check for things to answer yes/no for CLASSIFICATION problems
+    Think of variables as clues, did "money" play a role,"age?" Or maybe it was "location"  
+    
+4) Feature Engineering
+    Make new variables for model, use BETTER DATA
+
+5) Data Preprocessing for Model
+    Set up model, worry about optimization on tuning
+
+6) Basic Model Building
+
+
+7) Model Tuning
+
+
+8) Ensemble Model Building
+
+
+9) Results
 
 
 
 '''
 
 
-
+################ Standard Libraries ##################
 
 
 #import all of these standard libraries
@@ -33,6 +65,8 @@ data= pd.read_csv('C:/ or C:\\ or Blah.csv', index_col=0)
 data.head()
 data.tail()
 data.shape
+
+#The non-null should ALL equal the TOTAL ENTRIES
 data.info()
 data.describe()
 data['column'].describe()
@@ -57,7 +91,7 @@ data.fillna(data.median())
 data['salary'] = data['salary'].fillna(data['salary']
 
 #Final check for nulls
-df.isnull().sum()
+data.isnull().sum()
 
 #Remove Duplicates, Depends on situation.
 data.drop_duplicates(inplace= True)
@@ -153,8 +187,12 @@ plt.scatter(X_test1, y_test1)
 plt.scatter(X_test1, y_hat_test1)
 plt.show()
 
+
+
+############################################################
 '''
-Classification
+Classification 
+
 
 Logistic Regression = 1+ variables to get True or False outcome
     eg: risk factor of diseases, weather
